@@ -1,17 +1,5 @@
-﻿//using Design_Patterns.Creational.FactoryPattern;
-
-//internal class Program
-//{
-//    private static void Main(string[] args)
-//    {
-
-//        ILogger logger = LoggerFactory.CreateLogger(LoggerType.Console);
-//        logger.Log();
-//        Console.ReadLine();
-//    }
-//}
-//using System;
-namespace Design_Patterns.Structural.Other
+﻿using System;
+namespace Design_Patterns.Structural.Composite
 {
     //Object inside object
     // Component interface

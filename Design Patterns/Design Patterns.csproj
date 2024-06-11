@@ -6,6 +6,55 @@
     <RootNamespace>Design_Patterns</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+     <StartupObject>Design_Patterns.Structural.Other</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Creational\" />
+    <None Remove="Creational\FactoryPattern\" />
+    <None Remove="Creational\Builder Pattern\" />
+    <None Remove="Creational\Prototype\" />
+    <None Remove="Creational\Singleton\" />
+    <None Remove="Creational\AbstractFactory\" />
+    <None Remove="Behavioral\" />
+    <None Remove="Behavioral\Strategy\" />
+    <None Remove="Behavioral\NullObject.cs\" />
+    <None Remove="Behavioral\Command\" />
+    <None Remove="Behavioral\Iterator\" />
+    <None Remove="Behavioral\TemplateMethod\" />
+    <None Remove="Behavioral\ChainOfResponsibility\" />
+    <None Remove="Behavioral\Mediator\" />
+    <None Remove="Behavioral\Observer\" />
+    <None Remove="Behavioral\State\" />
+    <None Remove="Structural\" />
+    <None Remove="Structural\Proxy\" />
+    <None Remove="Structural\Adapter\" />
+    <None Remove="Structural\Bridge\" />
+    <None Remove="Structural\Composite\" />
+    <None Remove="Structural\Decorator\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Creational\" />
+    <Folder Include="Creational\FactoryPattern\" />
+    <Folder Include="Creational\Builder Pattern\" />
+    <Folder Include="Creational\Prototype\" />
+    <Folder Include="Creational\Singleton\" />
+    <Folder Include="Creational\AbstractFactory\" />
+    <Folder Include="Behavioral\" />
+    <Folder Include="Behavioral\Strategy\" />
+    <Folder Include="Behavioral\NullObject.cs\" />
+    <Folder Include="Behavioral\Command\" />
+    <Folder Include="Behavioral\Iterator\" />
+    <Folder Include="Behavioral\TemplateMethod\" />
+    <Folder Include="Behavioral\ChainOfResponsibility\" />
+    <Folder Include="Behavioral\Mediator\" />
+    <Folder Include="Behavioral\Observer\" />
+    <Folder Include="Behavioral\State\" />
+    <Folder Include="Structural\" />
+    <Folder Include="Structural\Proxy\" />
+    <Folder Include="Structural\Adapter\" />
+    <Folder Include="Structural\Bridge\" />
+    <Folder Include="Structural\Composite\" />
+    <Folder Include="Structural\Decorator\" />
+  </ItemGroup>
 </Project>
