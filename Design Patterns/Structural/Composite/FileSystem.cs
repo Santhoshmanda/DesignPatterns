@@ -1,6 +1,90 @@
 ﻿using System;
 namespace Design_Patterns.Structural.Composite
+{    
+
+    using System;
+using System.Collections.Generic;
+
+// Component: Defines the common interface for both files and directories.
+public abstract class FileSystemItem
 {
+    protected string Name;
+
+    public FileSystemItem(string name)
+    {
+        Name = name;
+    }
+
+    public abstract void Display();
+}
+
+// Leaf: Represents a file.
+public class File : FileSystemItem
+{
+    public File(string name) : base(name) { }
+
+    public override void Display()
+    {
+        Console.WriteLine($"File: {Name}");
+    }
+}
+
+// Composite: Represents a directory that can contain files or other directories.
+public class Directory : FileSystemItem
+{
+    private readonly List<FileSystemItem> _items = new();
+
+    public Directory(string name) : base(name) { }
+
+    public void Add(FileSystemItem item)
+    {
+        _items.Add(item);
+    }
+
+    public void Remove(FileSystemItem item)
+    {
+        _items.Remove(item);
+    }
+
+    public override void Display()
+    {
+        Console.WriteLine($"Directory: {Name}");
+        foreach (var item in _items)
+        {
+            item.Display();
+        }
+    }
+}
+
+// Client: Builds and interacts with the filesystem.
+public class Program
+{
+    public static void Main()
+    {
+        // Create files
+        var file1 = new File("File1.txt");
+        var file2 = new File("File2.txt");
+        var file3 = new File("File3.txt");
+
+        // Create directories
+        var subDirectory1 = new Directory("SubDirectory1");
+        var subDirectory2 = new Directory("SubDirectory2");
+        var rootDirectory = new Directory("RootDirectory");
+
+        // Build the filesystem structure
+        subDirectory1.Add(file1);
+        subDirectory1.Add(file2);
+
+        subDirectory2.Add(file3);
+
+        rootDirectory.Add(subDirectory1);
+        rootDirectory.Add(subDirectory2);
+
+        // Display the entire filesystem
+        rootDirectory.Display();
+    }
+}
+
     //Object inside object
     // Component interface
     interface IFileSystemNode
