@@ -108,6 +108,12 @@ namespace Design_Patterns.Behavioral.Command
         }
     }
 
+	The Process of Encapsulation:
+The request (such as "turn on the AC", "turn off the AC", or "set the temperature") is encapsulated inside command objects like TurnOnAcCommand, TurnOFFAcCommand, or SetTempCommand.
+These objects encapsulate the action, holding all the information needed to perform it.
+The Invoker (MyRemoteControl) triggers the action by invoking the Execute() method, which internally calls the appropriate method on the receiver (ACC).
+	 The Invoker doesn't need to know the details of the action or how the request is handled. It just knows how to invoke the command by calling Execute().
+
     
 }
 
