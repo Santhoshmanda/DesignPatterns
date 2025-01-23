@@ -25,6 +25,7 @@ public class PlainPizza : Pizza
 }
 
 // Decorator: Abstract class for pizza toppings
+//if there is any common logic that can be kept here else this class is not required
 public abstract class PizzaDecorator : Pizza
 {
     protected Pizza _pizza;
