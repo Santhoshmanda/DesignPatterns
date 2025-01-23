@@ -1,0 +1,138 @@
+using System;
+
+namespace ChainOfResponsibilityDesignPattern
+{
+    // Handler Abstract Class
+    public abstract class Handler
+    {
+        public Handler NextHandler;
+
+        public void SetNextHandler(Handler nextHandler)
+        {
+            this.NextHandler = nextHandler;
+        }
+
+        // Abstract method that child classes must implement to handle the request.
+        public abstract void DispatchNote(long requestedAmount);
+    }
+
+    // Concrete Handler: ₹2000 Note Handler
+    public class TwoThousandRupeesHandler : Handler
+    {
+        public override void DispatchNote(long requestedAmount)
+        {
+            if (requestedAmount >= 2000)
+            {
+                long numberOfNotes = requestedAmount / 2000;
+                long remainingAmount = requestedAmount % 2000;
+                Console.WriteLine($"Dispensing {numberOfNotes} x ₹2000 bill(s)");
+
+                if (remainingAmount > 0 && NextHandler != null)
+                {
+                    NextHandler.DispatchNote(remainingAmount);
+                }
+            }
+            else if (NextHandler != null)
+            {
+                NextHandler.DispatchNote(requestedAmount);
+            }
+        }
+    }
+
+    // Concrete Handler: ₹500 Note Handler
+    public class FiveHundredRupeesHandler : Handler
+    {
+        public override void DispatchNote(long requestedAmount)
+        {
+            if (requestedAmount >= 500)
+            {
+                long numberOfNotes = requestedAmount / 500;
+                long remainingAmount = requestedAmount % 500;
+                Console.WriteLine($"Dispensing {numberOfNotes} x ₹500 bill(s)");
+
+                if (remainingAmount > 0 && NextHandler != null)
+                {
+                    NextHandler.DispatchNote(remainingAmount);
+                }
+            }
+            else if (NextHandler != null)
+            {
+                NextHandler.DispatchNote(requestedAmount);
+            }
+        }
+    }
+
+    // Concrete Handler: ₹200 Note Handler
+    public class TwoHundredRupeesHandler : Handler
+    {
+        public override void DispatchNote(long requestedAmount)
+        {
+            if (requestedAmount >= 200)
+            {
+                long numberOfNotes = requestedAmount / 200;
+                long remainingAmount = requestedAmount % 200;
+                Console.WriteLine($"Dispensing {numberOfNotes} x ₹200 bill(s)");
+
+                if (remainingAmount > 0 && NextHandler != null)
+                {
+                    NextHandler.DispatchNote(remainingAmount);
+                }
+            }
+            else if (NextHandler != null)
+            {
+                NextHandler.DispatchNote(requestedAmount);
+            }
+        }
+    }
+
+    // Concrete Handler: ₹100 Note Handler
+    public class OneHundredRupeesHandler : Handler
+    {
+        public override void DispatchNote(long requestedAmount)
+        {
+            if (requestedAmount >= 100)
+            {
+                long numberOfNotes = requestedAmount / 100;
+                long remainingAmount = requestedAmount % 100;
+                Console.WriteLine($"Dispensing {numberOfNotes} x ₹100 bill(s)");
+
+                if (remainingAmount > 0 && NextHandler != null)
+                {
+                    NextHandler.DispatchNote(remainingAmount);
+                }
+            }
+            else if (NextHandler != null)
+            {
+                NextHandler.DispatchNote(requestedAmount);
+            }
+        }
+    }
+
+    // Client Code
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create handlers
+            var twoThousandHandler = new TwoThousandRupeesHandler();
+            var fiveHundredHandler = new FiveHundredRupeesHandler();
+            var twoHundredHandler = new TwoHundredRupeesHandler();
+            var oneHundredHandler = new OneHundredRupeesHandler();
+
+            // Set up the chain of responsibility
+            twoThousandHandler.SetNextHandler(fiveHundredHandler);
+            fiveHundredHandler.SetNextHandler(twoHundredHandler);
+            twoHundredHandler.SetNextHandler(oneHundredHandler);
+
+            // Request a withdrawal
+            Console.WriteLine("Requesting ₹3700 withdrawal:\n");
+            twoThousandHandler.DispatchNote(3700);
+
+            Console.WriteLine("\nRequesting ₹3800 withdrawal:\n");
+            twoThousandHandler.DispatchNote(3800);
+
+            Console.WriteLine("\nRequesting ₹2900 withdrawal:\n");
+            twoThousandHandler.DispatchNote(2900);
+        }
+    }
+}
