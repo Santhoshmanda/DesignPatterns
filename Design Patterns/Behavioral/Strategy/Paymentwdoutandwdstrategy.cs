@@ -98,7 +98,11 @@ namespace Design_Patterns.Behavioral.Strategy
         }
         
     }
-
+Putting It All Together
+Family of Algorithms: Different payment methods (cash, UPI, debit card, etc.).
+Encapsulation: Each payment method is encapsulated in its own class that implements PaymentStrategy.
+Interchangeability: You can dynamically switch between payment methods by injecting a different strategy into the client.
+Independent Variation: Changes to a payment algorithm (or adding new ones) do not affect the client (ModernPayment).
 
 
 
