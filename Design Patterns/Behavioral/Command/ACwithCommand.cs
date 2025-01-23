@@ -114,6 +114,11 @@ These objects encapsulate the action, holding all the information needed to perf
 The Invoker (MyRemoteControl) triggers the action by invoking the Execute() method, which internally calls the appropriate method on the receiver (ACC).
 	 The Invoker doesn't need to know the details of the action or how the request is handled. It just knows how to invoke the command by calling Execute().
 
-    
+    Why is This Encapsulation Beneficial?
+Decoupling: The client doesn't need to directly interact with the receiver (ACC). Instead, it interacts with the command objects. This decouples the client from the details of how the actions are performed.
+
+Extensibility: New actions can be added easily by creating new concrete command classes without modifying the invoker or receiver.
+
+Command History: You could easily implement features like undo/redo by storing the command objects and their states.
 }
 
